@@ -1,15 +1,35 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-opentracing-contrib-go-stdlib
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Martina Ferrari <tincho@debian.org>,
+Section: golang
+Testsuite: autopkgtest-pkg-go
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper-compat (= 13),
+               dh-golang,
+               golang-any,
+               golang-github-opentracing-opentracing-go-dev,
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-opentracing-contrib-go-stdlib
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-opentracing-contrib-go-stdlib.git
+Homepage: https://github.com/opentracing-contrib/go-stdlib
+Rules-Requires-Root: no
+XS-Go-Import-Path: github.com/opentracing-contrib/go-stdlib
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-opentracing-contrib-go-stdlib-dev
+Architecture: all
+Depends: golang-github-opentracing-opentracing-go-dev,
+         ${misc:Depends},
+         ${shlibs:Depends},
+Multi-Arch: foreign
+Description: OpenTracing instrumentation for packages in the Go stdlib
+ This package contains OpenTracing (http://opentracing.io/) instrumentation for
+ packages in the Go standard library.
+ .
+ Instrumentation is provided for the following packages, with the following
+ caveats:
+ .
+  * net/http: Client and server instrumentation. Only supported with Go 1.7 and
+    later.
+ .
+ For documentation on the packages, check godoc
+ (https://godoc.org/github.com/opentracing-contrib/go-stdlib/).
